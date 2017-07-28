@@ -1,14 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 
 namespace FolderExplorer.ViewModels
 {
-    public class FileItemViewModel : ViewModelBase
+    public class FileItemViewModel : BaseViewModel
     {
         private DirectoryItem _directoryItem;
 
@@ -20,13 +14,13 @@ namespace FolderExplorer.ViewModels
         public BitmapSource Icon
         {
             get { return _directoryItem.Icon; }
-            set { _directoryItem.Icon = value; RaisePropertyChanged(nameof(Icon)); }
+            set { _directoryItem.Icon = value; }
         }
 
         public string Name
         {
             get { return _directoryItem.Name; }
-            set { _directoryItem.Name = value; RaisePropertyChanged(nameof(Name)); }
+            set { _directoryItem.Name = value; }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -12,12 +10,11 @@ using System.Windows.Media.Imaging;
 
 namespace FolderExplorer.ViewModels
 {
-    public class DirectoryItemViewModel : ViewModelBase
+    public class DirectoryItemViewModel : BaseViewModel
     {
         private DirectoryItem _directoryItem;
         private ObservableCollection<DirectoryItemViewModel> _children;
-        private bool _isExpanded;
-        private ICommand _expandCommand;
+        private bool _isExpanded;        
 
         public DirectoryItemViewModel(string fullPath)
         {
@@ -33,24 +30,24 @@ namespace FolderExplorer.ViewModels
         public DirectoryType Type
         {
             get { return _directoryItem.Type; }
-            set { _directoryItem.Type = value; RaisePropertyChanged(nameof(Type)); }
+            set { _directoryItem.Type = value; }
         }
         public string FullPath
         {
             get { return _directoryItem.FullPath; }
-            set { _directoryItem.FullPath = value; RaisePropertyChanged(nameof(FullPath)); }
+            set { _directoryItem.FullPath = value; }
         }
 
         public string Name
         {
             get { return _directoryItem.Name; }
-            set { _directoryItem.Name = value; RaisePropertyChanged(nameof(Name)); }
+            set { _directoryItem.Name = value; }
         }
 
         public BitmapSource Icon
         {
             get { return _directoryItem.Icon; }
-            set { _directoryItem.Icon = value; RaisePropertyChanged(nameof(Icon)); }
+            set { _directoryItem.Icon = value; }
         }
         
         public ObservableCollection<DirectoryItemViewModel> Children
@@ -63,7 +60,7 @@ namespace FolderExplorer.ViewModels
                 }
                 return _children;
             }
-            set { _children = value; RaisePropertyChanged(nameof(Children)); }
+            set { _children = value; }
         }
 
         public bool CanExpand
@@ -85,15 +82,11 @@ namespace FolderExplorer.ViewModels
                     ClearChildren();
                 }
                                 
-                _isExpanded = value; RaisePropertyChanged(nameof(IsExpanded));
+                _isExpanded = value;
             }
         }
         
-        public ICommand ExpandCommand
-        {
-            get { return _expandCommand; }
-            set { _expandCommand = value; RaisePropertyChanged(nameof(ExpandCommand)); }
-        }
+        public ICommand ExpandCommand { get; set; }        
 
         private void Expand()
         {

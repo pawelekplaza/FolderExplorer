@@ -1,15 +1,10 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolderExplorer.ViewModels
 {
-    public class FileListViewModel : ViewModelBase
+    public class FileListViewModel : BaseViewModel
     {
         private ObservableCollection<FileItemViewModel> _items;
 
@@ -29,7 +24,7 @@ namespace FolderExplorer.ViewModels
                 }
                 return _items;
             }
-            set { _items = value; RaisePropertyChanged(nameof(Items)); }
+            set { _items = value; }
         }
     }
 }

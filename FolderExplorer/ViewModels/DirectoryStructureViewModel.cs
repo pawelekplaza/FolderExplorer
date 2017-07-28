@@ -1,14 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolderExplorer.ViewModels
 {
-    public class DirectoryStructureViewModel : ViewModelBase
+    public class DirectoryStructureViewModel : BaseViewModel
     {
         private DirectoryStructure _directoryStructure;
         private ObservableCollection<DirectoryItemViewModel> _items;
@@ -23,7 +18,7 @@ namespace FolderExplorer.ViewModels
         public ObservableCollection<DirectoryItemViewModel> Items
         {
             get { return _items; }
-            set { _items = value; RaisePropertyChanged(nameof(Items)); }
+            set { _items = value; }
         }        
     }
 }

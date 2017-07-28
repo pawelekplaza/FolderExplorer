@@ -25,6 +25,7 @@ namespace FolderExplorer
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new WindowViewModel(this);
             DirectoryStructure.DataContext = new DirectoryStructureViewModel();            
             FilesList.DataContext = new FileListViewModel(FilesList.FullPath ?? Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
         }
