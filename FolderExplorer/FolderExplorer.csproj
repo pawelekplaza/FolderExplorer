@@ -73,6 +73,8 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\DirectoryItemViewModel.cs" />
     <Compile Include="ViewModels\DirectoryStructureViewModel.cs" />
+    <Compile Include="ViewModels\FileItemViewModel.cs" />
+    <Compile Include="ViewModels\FileListViewModel.cs" />
     <Compile Include="Working\Directory\DirectoryHelper.cs" />
     <Compile Include="Working\Directory\DirectoryItem.cs" />
     <Compile Include="Working\Directory\DirectoryStructure.cs" />
@@ -118,8 +120,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\folder-opened.png" />
-    <Resource Include="Images\folder-with-files.png" />
     <Resource Include="Images\folder.png" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controls\Controls.csproj">
+      <Project>{ae33a42b-0307-43d1-bf0e-ae95d866bdbf}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

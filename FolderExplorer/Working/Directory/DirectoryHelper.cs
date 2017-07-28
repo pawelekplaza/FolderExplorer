@@ -12,12 +12,8 @@ namespace FolderExplorer
     public static class DirectoryHelper
     {
         private static string _folderIconName => "Images/folder.png";    
-        private static string _folderOpenedIconName => "Images/folder-opened.png";
-        private static string _folderWithFilesIconName => "Images/folder-with-files.png";
         private static string _driveIconName => "Images/hard-drive.png";
-        private static BitmapImage _folderIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderIconName }"));
-        private static BitmapImage _folderOpenedIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderOpenedIconName }"));
-        private static BitmapImage _folderWithFilesIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderWithFilesIconName }"));
+        private static BitmapImage _folderIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderIconName }"));        
         private static BitmapImage _driveIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _driveIconName }"));
 
 
@@ -80,12 +76,6 @@ namespace FolderExplorer
                     
                 case DirectoryType.File:
                     return GetFileIcon(item.FullPath);
-
-                case DirectoryType.FolderOpened:
-                    return _folderOpenedIcon;
-
-                case DirectoryType.FolderWithFiles:
-                    return _folderWithFilesIcon;
 
                 default:
                     return _folderIcon;

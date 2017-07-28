@@ -86,7 +86,6 @@ namespace FolderExplorer.ViewModels
                 }
                                 
                 _isExpanded = value; RaisePropertyChanged(nameof(IsExpanded));
-                SetIcon();
             }
         }
         
@@ -106,7 +105,7 @@ namespace FolderExplorer.ViewModels
             var children = DirectoryHelper.GetDirectoryContents(FullPath);
             Children = new ObservableCollection<DirectoryItemViewModel>(children.Select(content => new DirectoryItemViewModel(content.FullPath)));
             
-            RemoveHiddenItems();
+            RemoveHiddenItems();            
         }
 
         private void ClearChildren()
@@ -119,32 +118,13 @@ namespace FolderExplorer.ViewModels
 
             if (DirectoryHelper.HasVisibleContent(FullPath))
             {
-                Children.Add(null);
+                Children.Add(null);                
             }
         }              
 
         private void RemoveHiddenItems()
         {
             Children = new ObservableCollection<DirectoryItemViewModel>(Children.Where(item => DirectoryHelper.IsHidden(item.FullPath) == false));
-        }
-
-        private void SetIcon()
-        {
-            if (Type == DirectoryType.Drive || Type == DirectoryType.File)
-            {
-                return;
-            }
-
-            if (IsExpanded)
-            {
-                Type = DirectoryType.FolderOpened;
-            }
-            else
-            {
-                Type = DirectoryType.Folder;
-            }
-
-            Icon = DirectoryHelper.GetDirectoryIcon(_directoryItem);
         }
     }
 }
