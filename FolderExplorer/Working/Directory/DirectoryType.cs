@@ -4,6 +4,8 @@
     {
         Drive,
         Folder,
+        FolderOpened,
+        FolderWithFiles,
         File
     }
 }

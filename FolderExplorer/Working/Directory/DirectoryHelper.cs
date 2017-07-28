@@ -11,10 +11,15 @@ namespace FolderExplorer
 {
     public static class DirectoryHelper
     {
-        public static string FolderIconName => "Images/folder.png";    
-        public static string FolderOpenedIconName => "Images/folder-opened.png";
-        public static string FolderWithFilesIconName => "Images/folder-with-files.png";
-        public static string DriveIconName => "Images/hard-drive.png";
+        private static string _folderIconName => "Images/folder.png";    
+        private static string _folderOpenedIconName => "Images/folder-opened.png";
+        private static string _folderWithFilesIconName => "Images/folder-with-files.png";
+        private static string _driveIconName => "Images/hard-drive.png";
+        private static BitmapImage _folderIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderIconName }"));
+        private static BitmapImage _folderOpenedIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderOpenedIconName }"));
+        private static BitmapImage _folderWithFilesIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _folderWithFilesIconName }"));
+        private static BitmapImage _driveIcon = new BitmapImage(new Uri($"pack://application:,,,/{ _driveIconName }"));
+
 
         public static List<DirectoryItem> GetLogicalDrives()
         {
@@ -71,11 +76,19 @@ namespace FolderExplorer
             switch (item.Type)
             {
                 case DirectoryType.Drive:
-                    return new BitmapImage(new Uri($"pack://application:,,,/{ DriveIconName }"));                
+                    return _driveIcon;
+                    
                 case DirectoryType.File:
                     return GetFileIcon(item.FullPath);
+
+                case DirectoryType.FolderOpened:
+                    return _folderOpenedIcon;
+
+                case DirectoryType.FolderWithFiles:
+                    return _folderWithFilesIcon;
+
                 default:
-                    return new BitmapImage(new Uri($"pack://application:,,,/{ FolderIconName }"));
+                    return _folderIcon;
             }
         }
 

@@ -50,6 +50,7 @@ namespace FolderExplorer.ViewModels
         public BitmapSource Icon
         {
             get { return _directoryItem.Icon; }
+            set { _directoryItem.Icon = value; RaisePropertyChanged(nameof(Icon)); }
         }
         
         public ObservableCollection<DirectoryItemViewModel> Children
@@ -83,7 +84,9 @@ namespace FolderExplorer.ViewModels
                 {
                     ClearChildren();
                 }
+                                
                 _isExpanded = value; RaisePropertyChanged(nameof(IsExpanded));
+                SetIcon();
             }
         }
         
@@ -123,6 +126,25 @@ namespace FolderExplorer.ViewModels
         private void RemoveHiddenItems()
         {
             Children = new ObservableCollection<DirectoryItemViewModel>(Children.Where(item => DirectoryHelper.IsHidden(item.FullPath) == false));
+        }
+
+        private void SetIcon()
+        {
+            if (Type == DirectoryType.Drive || Type == DirectoryType.File)
+            {
+                return;
+            }
+
+            if (IsExpanded)
+            {
+                Type = DirectoryType.FolderOpened;
+            }
+            else
+            {
+                Type = DirectoryType.Folder;
+            }
+
+            Icon = DirectoryHelper.GetDirectoryIcon(_directoryItem);
         }
     }
 }

@@ -71,7 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\ItemToNameConverter.cs" />
     <Compile Include="ViewModels\DirectoryItemViewModel.cs" />
     <Compile Include="ViewModels\DirectoryStructureViewModel.cs" />
     <Compile Include="Working\Directory\DirectoryHelper.cs" />
@@ -86,7 +85,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converters\ItemToImageConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -126,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\hard-drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
