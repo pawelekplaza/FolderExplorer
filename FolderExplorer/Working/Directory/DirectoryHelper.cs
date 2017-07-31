@@ -18,9 +18,11 @@ namespace FolderExplorer
 
 
         public static List<DirectoryItem> GetLogicalDrives()
-        {
-            var items = Directory.GetLogicalDrives();
-            return items.Select(item => new DirectoryItem(item)).ToList();
+        {            
+            var drives = DriveInfo.GetDrives();
+            var validItems = drives.Where(item => item.DriveType == DriveType.Fixed);
+
+            return validItems.Select(item => new DirectoryItem(item.Name)).ToList();
         }
 
         public static List<DirectoryItem> GetDirectoryContents(string fullPath)

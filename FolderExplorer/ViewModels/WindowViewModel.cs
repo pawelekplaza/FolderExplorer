@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace FolderExplorer.ViewModels
 {
@@ -15,7 +16,7 @@ namespace FolderExplorer.ViewModels
         private int _windowRadius = Properties.Settings.Default.WindowRadius;
 
         public int TitleHeight { get; set; } = Properties.Settings.Default.TitleHeight;
-        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight); } }
+        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
         public int ResizeBorder { get; set; } = Properties.Settings.Default.ResizeBorder;
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
@@ -34,6 +35,11 @@ namespace FolderExplorer.ViewModels
         }
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
 
+        public ICommand MinimizeCommand { get; set; }
+        public ICommand MaximizeCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
+        public ICommand MenuCommand { get; set; }
+
         public WindowViewModel(Window window)
         {
             _window = window;
@@ -44,6 +50,12 @@ namespace FolderExplorer.ViewModels
                 RaisePropertyChanged(nameof(OuterMarginSizeThickness));
                 RaisePropertyChanged(nameof(WindowCornerRadius));                
             };
+
+            // Create commands
+            MinimizeCommand = new RelayCommand(() => _window.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => _window.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => _window.Close());
+            //MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_window, ))
         }
     }
 }
