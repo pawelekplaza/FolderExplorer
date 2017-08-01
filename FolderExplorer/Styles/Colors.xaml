@@ -8,7 +8,7 @@
     <Color x:Key="BackgroundVeryLight">#fbfbfb</Color>
     <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLight}" />
 
-    <Color x:Key="ForegroundMain">#383838</Color>
+    <Color x:Key="ForegroundMain">#585858</Color>
     <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMain}" />
 
     <Color x:Key="ForegroundVeryDark">#101010</Color>

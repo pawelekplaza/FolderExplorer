@@ -23,7 +23,7 @@
                             
                             <!-- Main window content -->
                             <Grid>
-
+                                
                                 <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}" Background="{StaticResource BackgroundVeryLightBrush}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" Opacity="0.2"/>
@@ -31,6 +31,7 @@
                                 </Border>
 
                                 <Grid>
+
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=36}" />
                                         <RowDefinition Height="Auto" />
@@ -44,16 +45,26 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <!-- Title -->
                                             <ColumnDefinition />
-                                            <!-- Windows buttons -->
+                                            <!-- Window buttons -->
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         
                                         <!-- Icon -->
-                                        <Button Style="{StaticResource SystemIconButton}">
+                                        <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
                                             <Image Source="/Images/folder.png" />
                                         </Button>
                                             
+                                        <!-- Title -->
+                                        <Viewbox Grid.Column="1">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Folder explorer'}" Style="{StaticResource HeaderText}"/>
+                                        </Viewbox>                                                 
 
+                                        <!-- Window buttons -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                            <Button Content="_" Style="{StaticResource WindowControlButton}"/>
+                                            <Button Content="[ ]" Style="{StaticResource WindowControlButton}"/>
+                                            <Button Content="X" Style="{StaticResource WindowCloseButton}"/>
+                                        </StackPanel>
 
                                     </Grid>
                                     
