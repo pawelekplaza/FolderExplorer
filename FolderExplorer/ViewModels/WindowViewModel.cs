@@ -7,13 +7,14 @@ namespace FolderExplorer.ViewModels
     /// The view model for the custom main window
     /// </summary>
     public class WindowViewModel : BaseViewModel
-    {
-        /// <summary>
-        /// The window this view model controls
-        /// </summary>
+    {        
         private Window _window;
         private int _outerMarginSize = Properties.Settings.Default.OuterMarginSize;
         private int _windowRadius = Properties.Settings.Default.WindowRadius;
+
+        public int WindowMinimumWidth { get; set; } = 320;
+        public int WindowMinimumHeight { get; set; } = 240;
+        public int InnerContentPadding { get; set; } = 0;
 
         public int TitleHeight { get; set; } = Properties.Settings.Default.TitleHeight;
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }

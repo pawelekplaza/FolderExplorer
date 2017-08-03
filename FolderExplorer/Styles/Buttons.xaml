@@ -51,13 +51,21 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource BackgroundLightBrush}" />
             </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource BackgroundSemiLightBrush}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
+    <!-- Window close button -->
     <Style TargetType="{x:Type Button}" x:Key="WindowCloseButton" BasedOn="{StaticResource WindowControlButton}">
         <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#da2222" />
+                <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -17,7 +17,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="FilesList" ItemTemplate="{StaticResource FileElement}" ItemsSource="{Binding Items}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
