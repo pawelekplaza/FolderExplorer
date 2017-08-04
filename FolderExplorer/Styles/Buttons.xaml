@@ -78,11 +78,13 @@
                     <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}">
                         <Image Height="18" Margin="2" Source="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        <StackPanel.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding OpenFileCommand}" />
+                        </StackPanel.InputBindings>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Command" Value="{Binding OpenFileCommand}" />
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
