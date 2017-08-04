@@ -78,6 +78,7 @@
     <Compile Include="ViewModels\FileItemViewModel.cs" />
     <Compile Include="ViewModels\FileListViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
+    <Compile Include="Working\CmdHelper.cs" />
     <Compile Include="Working\Directory\DirectoryHelper.cs" />
     <Compile Include="Working\Directory\DirectoryItem.cs" />
     <Compile Include="Working\Directory\DirectoryStructure.cs" />

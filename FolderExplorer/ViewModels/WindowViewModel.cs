@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FolderExplorer.ViewModels
@@ -55,7 +56,7 @@ namespace FolderExplorer.ViewModels
             // Create commands
             MinimizeCommand = new RelayCommand(() => _window.WindowState = WindowState.Minimized);
             MaximizeCommand = new RelayCommand(() => _window.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => _window.Close());
+            CloseCommand = new RelayCommand(() => Environment.Exit(0));
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_window, MouseHelper.GetPosition(_window)));
         }        
     }

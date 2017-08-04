@@ -9,10 +9,7 @@
     
     <UserControl.Resources>
         <DataTemplate x:Key="FileElement">
-            <StackPanel Orientation="Horizontal">
-                <Image Height="18" Margin="2" Source="{Binding Icon}" />
-                <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
-            </StackPanel>
+            <Button Style="{StaticResource FileButton}" />
         </DataTemplate>
     </UserControl.Resources>
 

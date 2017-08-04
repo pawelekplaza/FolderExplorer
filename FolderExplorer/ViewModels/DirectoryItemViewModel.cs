@@ -25,7 +25,7 @@ namespace FolderExplorer.ViewModels
             ExpandCommand = new RelayCommand(() =>
             {
                 Expand();
-            });
+            });            
 
             ClearChildren();
         }
@@ -103,7 +103,7 @@ namespace FolderExplorer.ViewModels
             }
         }
 
-        public ICommand ExpandCommand { get; set; }        
+        public ICommand ExpandCommand { get; set; }
 
         private void Expand()
         {

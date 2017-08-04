@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace FolderExplorer.ViewModels
 {
@@ -9,7 +10,14 @@ namespace FolderExplorer.ViewModels
         public FileItemViewModel(string fullPath)
         {
             _directoryItem = new DirectoryItem(fullPath);
+
+            OpenFileCommand = new RelayCommand(() =>
+            {
+                CmdHelper.Run(fullPath);
+            });
         }
+
+        public ICommand OpenFileCommand { get; set; }
 
         public BitmapSource Icon
         {

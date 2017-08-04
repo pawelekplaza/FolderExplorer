@@ -11,6 +11,12 @@
     <Color x:Key="BackgroundSemiLight">#dbdbdb</Color>
     <SolidColorBrush x:Key="BackgroundSemiLightBrush" Color="{StaticResource BackgroundSemiLight}" />
 
+    <Color x:Key="BackgroundLightBlue">#c3ecf9</Color>
+    <SolidColorBrush x:Key="BackgroundLightBlueBrush" Color="{StaticResource BackgroundLightBlue}" />
+
+    <Color x:Key="BackgroundBlue">#6fdbff</Color>
+    <SolidColorBrush x:Key="BackgroundBlueBrush" Color="{StaticResource BackgroundBlue}" />
+
     <Color x:Key="ForegroundMain">#585858</Color>
     <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMain}" />
 
