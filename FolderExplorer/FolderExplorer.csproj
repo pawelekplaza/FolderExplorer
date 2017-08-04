@@ -83,6 +83,7 @@
     <Compile Include="Working\Directory\DirectoryItem.cs" />
     <Compile Include="Working\Directory\DirectoryStructure.cs" />
     <Compile Include="Working\Directory\DirectoryType.cs" />
+    <Compile Include="Working\FilePropertiesHelper.cs" />
     <Compile Include="Working\MouseHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

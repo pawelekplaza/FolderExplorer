@@ -34,6 +34,13 @@ namespace FolderExplorer
             };
 
             DirectoryStructure.DataContext = directoryStructureViewModel;
+            var btn = new Button();
+            btn.MouseRightButtonDown += Btn_MouseRightButtonDown;
+        }
+
+        private void Btn_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

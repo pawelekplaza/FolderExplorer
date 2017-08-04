@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace FolderExplorer.ViewModels
@@ -13,11 +14,17 @@ namespace FolderExplorer.ViewModels
 
             OpenFileCommand = new RelayCommand(() =>
             {
-                CmdHelper.Run(fullPath);
+                CmdHelper.Run(_directoryItem.FullPath);
+            });
+
+            ShowFilePropertiesCommand = new RelayCommand(() =>
+            {
+                FilePropertiesHelper.ShowFileProperties(_directoryItem.FullPath);
             });
         }
 
         public ICommand OpenFileCommand { get; set; }
+        public ICommand ShowFilePropertiesCommand { get; set; }        
 
         public BitmapSource Icon
         {

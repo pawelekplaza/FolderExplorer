@@ -78,13 +78,25 @@
                     <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}">
                         <Image Height="18" Margin="2" Source="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        
+                        <!-- Open a file after LMB double click -->
                         <StackPanel.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick" Command="{Binding OpenFileCommand}" />
                         </StackPanel.InputBindings>
+                        
+                        <!-- Show RMB menu -->
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Open" Command="{Binding OpenFileCommand}" />
+                                <MenuItem Header="Properties" Command="{Binding ShowFilePropertiesCommand}" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <EventSetter Event="MouseRightButtonDown" Handler="{Binding MouseRightButtonDownHandler}" />
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
