@@ -27,7 +27,7 @@ namespace FolderExplorer
 
         public static List<DirectoryItem> GetDirectoryContents(string fullPath)
         {
-            var items = Directory.GetFileSystemEntries(fullPath);
+            var items = Directory.GetDirectories(fullPath);
             return items.Select(item => new DirectoryItem(item)).ToList();
         }
 

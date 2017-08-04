@@ -14,7 +14,10 @@ namespace FolderExplorer.ViewModels
     {
         private DirectoryItem _directoryItem;
         private ObservableCollection<DirectoryItemViewModel> _children;
-        private bool _isExpanded;        
+        private bool _isExpanded;
+        private bool _isSelected;
+
+        public event EventHandler<SelectedEventArgs> Selected;
 
         public DirectoryItemViewModel(string fullPath)
         {
@@ -85,7 +88,21 @@ namespace FolderExplorer.ViewModels
                 _isExpanded = value;
             }
         }
-        
+
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                if (value == true)
+                {
+                    Selected?.Invoke(this, new SelectedEventArgs { FullPath = this.FullPath });
+                }
+
+                _isSelected = value;
+            }
+        }
+
         public ICommand ExpandCommand { get; set; }        
 
         private void Expand()
@@ -96,7 +113,12 @@ namespace FolderExplorer.ViewModels
             }
             
             var children = DirectoryHelper.GetDirectoryContents(FullPath);
-            Children = new ObservableCollection<DirectoryItemViewModel>(children.Select(content => new DirectoryItemViewModel(content.FullPath)));
+            Children = new ObservableCollection<DirectoryItemViewModel>(children.Select(content =>
+            {
+                var viewModel = new DirectoryItemViewModel(content.FullPath);
+                viewModel.Selected += (s, e) => Selected?.Invoke(s, e);
+                return viewModel;
+            }));
             
             RemoveHiddenItems();            
         }

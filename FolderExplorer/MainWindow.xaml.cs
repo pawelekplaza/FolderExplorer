@@ -26,8 +26,14 @@ namespace FolderExplorer
         {
             InitializeComponent();
             DataContext = new WindowViewModel(this);
-            DirectoryStructure.DataContext = new DirectoryStructureViewModel();            
-            FilesList.DataContext = new FileListViewModel(FilesList.FullPath ?? Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+
+            var directoryStructureViewModel = new DirectoryStructureViewModel();
+            directoryStructureViewModel.Selected += (s, e) =>
+            {
+                FilesList.DataContext = new FileListViewModel(e.FullPath ?? Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            };
+
+            DirectoryStructure.DataContext = directoryStructureViewModel;
         }
     }
 }

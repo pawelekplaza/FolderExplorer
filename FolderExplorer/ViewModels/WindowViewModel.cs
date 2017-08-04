@@ -14,7 +14,7 @@ namespace FolderExplorer.ViewModels
 
         public int WindowMinimumWidth { get; set; } = 320;
         public int WindowMinimumHeight { get; set; } = 240;
-        public int InnerContentPadding { get; set; } = 0;
+        public int InnerContentPadding { get; set; } = 10;
 
         public int TitleHeight { get; set; } = Properties.Settings.Default.TitleHeight;
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
