@@ -36,7 +36,5 @@ namespace Controls
         // Using a DependencyProperty as the backing store for FullPath.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FullPathProperty =
             DependencyProperty.Register("FullPath", typeof(string), typeof(FilesListUserControl), new PropertyMetadata(""));
-
-
     }
 }

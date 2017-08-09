@@ -9,7 +9,23 @@
     
     <UserControl.Resources>
         <DataTemplate x:Key="FileElement">
-            <Button Style="{StaticResource FileButton}" />
+            <Button Style="{StaticResource FileButton}">
+                <Button.InputBindings>
+                    <!-- Open a file after LMB double click -->
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding OpenFileCommand}" />
+
+                    <!-- Open a file after ENTER hit -->
+                    <KeyBinding Key="Return" Command="{Binding OpenFileCommand}" />
+                </Button.InputBindings>
+
+                <!-- Show RMB menu -->
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Open" Command="{Binding OpenFileCommand}" />
+                        <MenuItem Header="Properties" Command="{Binding ShowFilePropertiesCommand}" />
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
         </DataTemplate>
     </UserControl.Resources>
 

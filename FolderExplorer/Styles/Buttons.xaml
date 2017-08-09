@@ -71,32 +71,27 @@
     </Style>
 
     <Style TargetType="{x:Type Button}" x:Key="FileButton" BasedOn="{StaticResource BaseStyle}">
+        
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}">
-                        <Image Height="18" Margin="2" Source="{Binding Icon}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
-                        
-                        <!-- Open a file after LMB double click -->
-                        <StackPanel.InputBindings>
-                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding OpenFileCommand}" />
-                        </StackPanel.InputBindings>
-                        
-                        <!-- Show RMB menu -->
-                        <StackPanel.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Open" Command="{Binding OpenFileCommand}" />
-                                <MenuItem Header="Properties" Command="{Binding ShowFilePropertiesCommand}" />
-                            </ContextMenu>
-                        </StackPanel.ContextMenu>
-                    </StackPanel>
+                    
+                    <ContentControl Focusable="False">
+                        <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}" ToolTip="{Binding FullPath}">
+                            <Image Height="18" Margin="2" Source="{Binding Icon}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        </StackPanel>
+                    </ContentControl>
+                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
 
-        <EventSetter Event="MouseRightButtonDown" Handler="{Binding MouseRightButtonDownHandler}" />
+        <!-- TODO -->
+        <!--<EventSetter Event="MouseRightButtonDown" Handler="{Binding MouseRightButtonDownHandler}" />-->
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">

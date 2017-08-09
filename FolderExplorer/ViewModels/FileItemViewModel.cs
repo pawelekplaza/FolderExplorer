@@ -10,16 +10,17 @@ namespace FolderExplorer.ViewModels
 
         public FileItemViewModel(string fullPath)
         {
-            _directoryItem = new DirectoryItem(fullPath);
+            FullPath = fullPath;
+            _directoryItem = new DirectoryItem(FullPath);
 
             OpenFileCommand = new RelayCommand(() =>
             {
-                CmdHelper.Run(_directoryItem.FullPath);
+                CmdHelper.Run(FullPath);
             });
 
             ShowFilePropertiesCommand = new RelayCommand(() =>
             {
-                FilePropertiesHelper.ShowFileProperties(_directoryItem.FullPath);
+                FilePropertiesHelper.ShowFileProperties(FullPath);
             });
         }
 
@@ -37,5 +38,7 @@ namespace FolderExplorer.ViewModels
             get { return _directoryItem.Name; }
             set { _directoryItem.Name = value; }
         }
+
+        public string FullPath { get; set; }
     }
 }
